@@ -9,17 +9,15 @@ import UIKit
 import SnapKit
 import CoreLocation
 
-
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     let networkManager = WeatherNetworkManager()
     
-    let currentLocation: UILabel = {
+    private lazy var currentLocation:UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "...Location"
         label.textAlignment = .center
-        label.textColor = .label
+        label.textColor = .white
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
@@ -27,10 +25,10 @@ class HomeViewController: UIViewController {
         return label
     }()
     
-    let currentTime: UILabel = {
+    
+    private lazy var currentTime: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "28 March 2020"
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
@@ -39,10 +37,10 @@ class HomeViewController: UIViewController {
         return label
     }()
     
-    let currentTemperatureLabel: UILabel = {
+    private lazy var  currentTemperatureLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "°C"
+        label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
         label.textColor = .label
@@ -51,30 +49,29 @@ class HomeViewController: UIViewController {
         return label
     }()
     
-    let tempDescription: UILabel = {
+    private lazy var  tempDescription: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "..."
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
         label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        label.font = UIFont.systemFont(ofSize:18, weight: .light)
         return label
     }()
-    let tempSymbol: UIImageView = {
+    
+    
+    private lazy var  tempSymbol: UIImageView = {
        let img = UIImageView()
-        img.image = UIImage(systemName: "cloud.fill")
         img.contentMode = .scaleAspectFit
-       
         img.translatesAutoresizingMaskIntoConstraints = false
-        img.tintColor = .gray
         return img
     }()
     
 
-    let maxTemp: UILabel = {
+    private lazy var  maxTemp: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "  °C"
@@ -85,7 +82,9 @@ class HomeViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return label
     }()
-    let minTemp: UILabel = {
+    
+    
+    private lazy var  minTemp: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "  °C"
@@ -106,9 +105,12 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
-        
+        initView()
+    }
+    
+    
+    private func initView() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -116,6 +118,13 @@ class HomeViewController: UIViewController {
         navSetUpView()
         privateSetupViews()
         layoutViews()
+        
+        currentTime.textColor = .white
+        currentTemperatureLabel.textColor = .white
+        tempDescription.textColor = .white
+        maxTemp.textColor = .white
+        minTemp.textColor = .white
+        tempSymbol.tintColor = .white
     }
     
     
@@ -125,7 +134,6 @@ class HomeViewController: UIViewController {
     
     
     
- 
     
     //MARK: - Functions
     @objc func handleAddPlaceButton() {
@@ -151,7 +159,7 @@ class HomeViewController: UIViewController {
     }
 
     @objc func handleShowForecast() {
-        self.navigationController?.pushViewController(ForeCastViewController(), animated: true)
+        self.navigationController?.pushViewController(DetailViewController(), animated: true)
     }
     
     @objc func handleRefresh() {
@@ -240,7 +248,7 @@ extension HomeViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.2)
+            make.height.equalToSuperview().multipliedBy(0.1)
         }
         
         currentTime.snp.makeConstraints { make in
@@ -254,15 +262,15 @@ extension HomeViewController {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(40)
             make.width.equalToSuperview().multipliedBy(0.5)
-            make.height.equalToSuperview().multipliedBy(0.2)
+            make.height.equalToSuperview().multipliedBy(0.1)
         }
         
         
         tempDescription.snp.makeConstraints { make in
             make.top.equalTo(currentTemperatureLabel.snp.bottom).offset(4)
             make.left.equalToSuperview().offset(40)
-            make.width.equalTo(50)
-            make.height.equalTo(30)
+            make.width.equalTo(80)
+            make.height.equalTo(40)
         }
         
         
@@ -270,7 +278,7 @@ extension HomeViewController {
             make.top.equalTo(currentTemperatureLabel.snp.bottom).offset(4)
             make.left.equalTo(tempDescription.snp.right).offset(20)
             make.width.equalTo(50)
-            make.height.equalTo(30)
+            make.height.equalTo(40)
         }
         
         
@@ -278,14 +286,14 @@ extension HomeViewController {
             make.top.equalTo(tempSymbol.snp.bottom).offset(40)
             make.left.equalTo(40)
             make.width.equalTo(100)
-            make.height.equalTo(30)
+            make.height.equalTo(50)
         }
         
         minTemp.snp.makeConstraints { make in
             make.top.equalTo(maxTemp.snp.bottom).offset(10)
             make.left.equalTo(40)
             make.width.equalTo(100)
-            make.height.equalTo(30)
+            make.height.equalTo(50)
         }
     }
 }

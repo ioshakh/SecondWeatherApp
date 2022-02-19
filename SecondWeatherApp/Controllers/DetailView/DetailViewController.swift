@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class ForeCastViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource {
-    
+class DetailViewController: UIViewController {
     
     let networkManager = WeatherNetworkManager()
     var collectionView : UICollectionView!
@@ -18,7 +18,6 @@ class ForeCastViewController: UIViewController , UICollectionViewDelegate , UICo
         super.viewDidLoad()
 
         self.view.backgroundColor = .systemBackground
-        
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
         collectionView.register(ForecastCell.self, forCellWithReuseIdentifier: ForecastCell.reuseIdentifier)
@@ -47,23 +46,12 @@ class ForeCastViewController: UIViewController , UICollectionViewDelegate , UICo
     
     
     func setupViews() {
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        collectionView.snp.makeConstraints { make in
+            make.bottom.left.right.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(8)
+        }
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return forecastData.count
-     }
-     
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ForecastCell.reuseIdentifier, for: indexPath) as! ForecastCell
-        cell.configure(with: forecastData[indexPath.row])
-        return cell
-     }
-     
 
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
@@ -88,4 +76,17 @@ class ForeCastViewController: UIViewController , UICollectionViewDelegate , UICo
       // layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
        return layoutSection
    }
+}
+
+
+extension DetailViewController : UICollectionViewDelegate ,UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return forecastData.count
+     }
+     
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ForecastCell.reuseIdentifier, for: indexPath) as! ForecastCell
+        cell.configure(with: forecastData[indexPath.row])
+        return cell
+     }
 }
