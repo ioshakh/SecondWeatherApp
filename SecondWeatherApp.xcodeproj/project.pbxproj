@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BE84DA5B27C0F97400CE63A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE84DA5A27C0F97400CE63A5 /* AppDelegate.swift */; };
-		BE84DA5D27C0F97400CE63A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE84DA5C27C0F97400CE63A5 /* SceneDelegate.swift */; };
-		BE84DA5F27C0F97400CE63A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE84DA5E27C0F97400CE63A5 /* ViewController.swift */; };
-		BE84DA6227C0F97400CE63A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE84DA6027C0F97400CE63A5 /* Main.storyboard */; };
 		BE84DA6527C0F97400CE63A5 /* SecondWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE84DA6327C0F97400CE63A5 /* SecondWeatherApp.xcdatamodeld */; };
 		BE84DA6727C0F97500CE63A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE84DA6627C0F97500CE63A5 /* Assets.xcassets */; };
 		BE84DA6A27C0F97500CE63A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE84DA6827C0F97500CE63A5 /* LaunchScreen.storyboard */; };
+		BE84DA7927C0FDAC00CE63A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE84DA7827C0FDAC00CE63A5 /* HomeViewController.swift */; };
 		EECF52E7AD8070D7FF154631 /* Pods_SecondWeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7C147A6555FEC0B495BE5F /* Pods_SecondWeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,13 +20,11 @@
 		6E7C147A6555FEC0B495BE5F /* Pods_SecondWeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecondWeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE84DA5727C0F97400CE63A5 /* SecondWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecondWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE84DA5A27C0F97400CE63A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BE84DA5C27C0F97400CE63A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BE84DA5E27C0F97400CE63A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BE84DA6127C0F97400CE63A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE84DA6427C0F97400CE63A5 /* SecondWeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SecondWeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		BE84DA6627C0F97500CE63A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE84DA6927C0F97500CE63A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE84DA6B27C0F97500CE63A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE84DA7827C0FDAC00CE63A5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DB6E3E24695E01C9353D999C /* Pods-SecondWeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecondWeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-SecondWeatherApp/Pods-SecondWeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,7 +54,6 @@
 				DB6E3E24695E01C9353D999C /* Pods-SecondWeatherApp.debug.xcconfig */,
 				025C1F992CCC0E690207488E /* Pods-SecondWeatherApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,16 +78,70 @@
 		BE84DA5927C0F97400CE63A5 /* SecondWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				BE84DA5A27C0F97400CE63A5 /* AppDelegate.swift */,
-				BE84DA5C27C0F97400CE63A5 /* SceneDelegate.swift */,
-				BE84DA5E27C0F97400CE63A5 /* ViewController.swift */,
-				BE84DA6027C0F97400CE63A5 /* Main.storyboard */,
-				BE84DA6627C0F97500CE63A5 /* Assets.xcassets */,
-				BE84DA6827C0F97500CE63A5 /* LaunchScreen.storyboard */,
+				BE84DA7227C0FC7800CE63A5 /* Application */,
+				BE84DA7327C0FCED00CE63A5 /* UI */,
+				BE84DA7527C0FD3A00CE63A5 /* NetworkManager */,
+				BE84DA7727C0FD6A00CE63A5 /* Cells */,
+				BE84DA7627C0FD5000CE63A5 /* Model */,
+				BE84DA7427C0FD0E00CE63A5 /* Extensions */,
+				BE84DA7127C0FC6600CE63A5 /* Resources */,
 				BE84DA6B27C0F97500CE63A5 /* Info.plist */,
-				BE84DA6327C0F97400CE63A5 /* SecondWeatherApp.xcdatamodeld */,
 			);
 			path = SecondWeatherApp;
+			sourceTree = "<group>";
+		};
+		BE84DA7127C0FC6600CE63A5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE84DA6327C0F97400CE63A5 /* SecondWeatherApp.xcdatamodeld */,
+				BE84DA6627C0F97500CE63A5 /* Assets.xcassets */,
+				BE84DA6827C0F97500CE63A5 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BE84DA7227C0FC7800CE63A5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BE84DA5A27C0F97400CE63A5 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BE84DA7327C0FCED00CE63A5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BE84DA7827C0FDAC00CE63A5 /* HomeViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		BE84DA7427C0FD0E00CE63A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BE84DA7527C0FD3A00CE63A5 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		BE84DA7627C0FD5000CE63A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BE84DA7727C0FD6A00CE63A5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +206,6 @@
 			files = (
 				BE84DA6A27C0F97500CE63A5 /* LaunchScreen.storyboard in Resources */,
 				BE84DA6727C0F97500CE63A5 /* Assets.xcassets in Resources */,
-				BE84DA6227C0F97400CE63A5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,24 +258,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE84DA5F27C0F97400CE63A5 /* ViewController.swift in Sources */,
 				BE84DA5B27C0F97400CE63A5 /* AppDelegate.swift in Sources */,
 				BE84DA6527C0F97400CE63A5 /* SecondWeatherApp.xcdatamodeld in Sources */,
-				BE84DA5D27C0F97400CE63A5 /* SceneDelegate.swift in Sources */,
+				BE84DA7927C0FDAC00CE63A5 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BE84DA6027C0F97400CE63A5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE84DA6127C0F97400CE63A5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BE84DA6827C0F97500CE63A5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -368,7 +407,6 @@
 				INFOPLIST_FILE = SecondWeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -398,7 +436,6 @@
 				INFOPLIST_FILE = SecondWeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
